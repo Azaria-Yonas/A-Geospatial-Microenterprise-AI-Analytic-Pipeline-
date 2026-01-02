@@ -1,0 +1,4 @@
+CREATE TABLE zipCodes(
+    Index_num BIGSERIAL NOT NULL,
+    zip INT PRIMARY KEY
+)
