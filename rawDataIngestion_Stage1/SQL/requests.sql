@@ -1,16 +1,16 @@
 CREATE TABLE requests(
-    index_ BIGSERIAL NOT NULL,
+    index_num BIGSERIAL NOT NULL,
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     
     zcta INT REFERENCES zcta(zcta),
 
     api VARCHAR(8) NOT NULL CHECK (api IN ('places','overpass','arcgis','census')),
     endpoint VARCHAR,
-    method VARCHAR(4) NOT NULL CHECK (request_Method IN ('POST','GET')),
+    method VARCHAR(4) NOT NULL CHECK (method IN ('POST','GET')),
 
 
     headers JSONB,
-    body/parameters/payload JSONB,
+    body JSONB,
      
     status_code INT,
     error_message TEXT,

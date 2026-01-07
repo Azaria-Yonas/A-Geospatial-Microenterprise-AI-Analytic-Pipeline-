@@ -1,4 +1,6 @@
 import psycopg
+from psycopg.types.json import Json
+
 from . import DB_NAME, USERNAME, DB_KEY
 
 def insert_response(zcta, api, response):
@@ -7,5 +9,5 @@ def insert_response(zcta, api, response):
             curr.execute("""
                 INSERT INTO responses (zcta, api, response) 
                 VALUES (%s, %s, %s);
-            """ 
-            (zcta, api, response))
+            """, 
+            (zcta, api, Json(response)))
